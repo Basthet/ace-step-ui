@@ -134,7 +134,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
 
   // Advanced Settings
   const [showAdvanced, setShowAdvanced] = useState(false);
-  const [duration, setDuration] = useState(-1);
+  const [duration, setDuration] = useState(184);
   const [batchSize, setBatchSize] = useState(() => {
     const stored = localStorage.getItem('ace-batchSize');
     return stored ? Number(stored) : 1;
@@ -148,7 +148,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
   const [seed, setSeed] = useState(-1);
   const [thinking, setThinking] = useState(false); // Default false for GPU compatibility
   const [audioFormat, setAudioFormat] = useState<'mp3' | 'flac'>('mp3');
-  const [inferenceSteps, setInferenceSteps] = useState(12);
+  const [inferenceSteps, setInferenceSteps] = useState(50);
   const [inferMethod, setInferMethod] = useState<'ode' | 'sde'>('ode');
   const [lmBackend, setLmBackend] = useState<'pt' | 'vllm'>('pt');
   const [lmModel, setLmModel] = useState(() => {
@@ -928,7 +928,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
                 <select
                   value={vocalLanguage}
                   onChange={(e) => setVocalLanguage(e.target.value)}
-                  className="flex-1 min-w-[180px] bg-transparent text-sm text-zinc-900 dark:text-white focus:outline-none"
+                  className="flex-1 min-w-[180px] bg-zinc-50 dark:bg-suno-card text-sm text-zinc-900 dark:text-white focus:outline-none"
                 >
                   {VOCAL_LANGUAGES.map(lang => (
                     <option key={lang.value} value={lang.value}>{lang.label}</option>
@@ -1432,7 +1432,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
               <select
                 value={keyScale}
                 onChange={(e) => setKeyScale(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
+                className="w-full bg-zinc-50 dark:bg-suno-card border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
               >
                 <option value="">Auto</option>
                 {KEY_SIGNATURES.filter(k => k).map(key => (
@@ -1445,7 +1445,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
               <select
                 value={timeSignature}
                 onChange={(e) => setTimeSignature(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
+                className="w-full bg-zinc-50 dark:bg-suno-card border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
               >
                 <option value="">Auto</option>
                 {TIME_SIGNATURES.filter(t => t).map(time => (
@@ -1581,7 +1581,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
                 <select
                   value={audioFormat}
                   onChange={(e) => setAudioFormat(e.target.value as 'mp3' | 'flac')}
-                  className="w-full bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
+                  className="w-full bg-zinc-50 dark:bg-suno-card border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
                 >
                   <option value="mp3">MP3 (smaller)</option>
                   <option value="flac">FLAC (lossless)</option>
@@ -1592,7 +1592,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
                 <select
                   value={inferMethod}
                   onChange={(e) => setInferMethod(e.target.value as 'ode' | 'sde')}
-                  className="w-full bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
+                  className="w-full bg-zinc-50 dark:bg-suno-card border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
                 >
                   <option value="ode">Deterministic (ODE)</option>
                   <option value="sde">Stochastic (SDE)</option>
@@ -1606,7 +1606,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
               <select
                 value={lmBackend}
                 onChange={(e) => setLmBackend(e.target.value as 'pt' | 'vllm')}
-                className="w-full bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
+                className="w-full bg-zinc-50 dark:bg-suno-card border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
               >
                 <option value="pt">PT (~1.6 GB VRAM)</option>
                 <option value="vllm">VLLM (~9.2 GB VRAM)</option>
@@ -1620,7 +1620,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
               <select
                 value={lmModel}
                 onChange={(e) => { const v = e.target.value; setLmModel(v); localStorage.setItem('ace-lmModel', v); }}
-                className="w-full bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
+                className="w-full bg-zinc-50 dark:bg-suno-card border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
               >
                 <option value="acestep-5Hz-lm-0.6B">0.6B (Lightest, ~0.5 GB VRAM)</option>
                 <option value="acestep-5Hz-lm-1.7B">1.7B (Balanced, ~1.5 GB VRAM)</option>
@@ -1818,7 +1818,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
                 <select
                   value={taskType}
                   onChange={(e) => setTaskType(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-black/20 border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
+                  className="w-full bg-zinc-50 dark:bg-suno-card border border-zinc-200 dark:border-white/10 rounded-lg px-2 py-1.5 text-xs text-zinc-900 dark:text-white focus:outline-none"
                 >
                   <option value="text2music">Text → Music</option>
                   <option value="audio2audio">Audio → Audio</option>
