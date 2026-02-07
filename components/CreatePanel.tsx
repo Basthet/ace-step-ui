@@ -1547,7 +1547,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
               <input
                 type="range"
                 min="4"
-                max="32"
+                max="60"
                 step="1"
                 value={inferenceSteps}
                 onChange={(e) => setInferenceSteps(Number(e.target.value))}

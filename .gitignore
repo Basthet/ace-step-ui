@@ -94,3 +94,8 @@ wavacity-editor/
 
 # Script logs
 logs/
+
+# Local database files
+/server/server/data/*.db
+/server/server/data/*.db-shm
+/server/server/data/*.db-wal

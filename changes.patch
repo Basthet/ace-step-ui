@@ -1,0 +1,26 @@
+diff --git a/components/CreatePanel.tsx b/components/CreatePanel.tsx
+index a041000..302ab3f 100644
+--- a/components/CreatePanel.tsx
++++ b/components/CreatePanel.tsx
+@@ -1547,7 +1547,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
+               <input
+                 type="range"
+                 min="4"
+-                max="32"
++                max="60"
+                 step="1"
+                 value={inferenceSteps}
+                 onChange={(e) => setInferenceSteps(Number(e.target.value))}
+diff --git a/server/src/services/acestep.ts b/server/src/services/acestep.ts
+index fd41b63..52e252f 100644
+--- a/server/src/services/acestep.ts
++++ b/server/src/services/acestep.ts
+@@ -676,8 +676,6 @@ async function processGeneration(
+     if (params.lmTopK !== undefined && params.lmTopK > 0) args.push('--lm-top-k', String(params.lmTopK));
+     if (params.lmTopP !== undefined) args.push('--lm-top-p', String(params.lmTopP));
+     if (params.lmNegativePrompt) args.push('--lm-negative-prompt', params.lmNegativePrompt);
+-    if (params.lmBackend) args.push('--lm-backend', params.lmBackend);
+-    if (params.lmModel) args.push('--lm-model', params.lmModel);
+     if (params.useCotMetas === false) args.push('--no-cot-metas');
+     if (params.useCotCaption === false) args.push('--no-cot-caption');
+     if (params.useCotLanguage === false) args.push('--no-cot-language');
